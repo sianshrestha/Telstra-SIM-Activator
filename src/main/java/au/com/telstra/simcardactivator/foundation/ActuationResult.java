@@ -1,7 +1,9 @@
-package au.com.telstra.simcardactivator.model;
+package au.com.telstra.simcardactivator.foundation;
 
-public class ActuatorResponse {
+public class ActuationResult{
     private boolean success;
+
+    public ActuationResult() {}
 
     public boolean isSuccess() {
         return success;

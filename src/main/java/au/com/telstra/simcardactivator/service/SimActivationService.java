@@ -1,32 +1,27 @@
 package au.com.telstra.simcardactivator.service;
 
+import au.com.telstra.simcardactivator.component.SimCardActuationHandler;
+import au.com.telstra.simcardactivator.foundation.ActuationResult;
+import au.com.telstra.simcardactivator.foundation.SimCard;
 import au.com.telstra.simcardactivator.model.SimActivationRequest;
-import au.com.telstra.simcardactivator.model.ActuatorResponse;
-
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class SimActivationService {
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final SimCardActuationHandler actuationHandler;
 
-    public boolean activateSimCard(SimActivationRequest request) {
-        String actuatorUrl = "http://localhost:8444/actuate";
-        String payload = "{\"iccid\":\"" + request.getIccid() + "\"}";
+    public SimActivationService(SimCardActuationHandler actuationHandler) {
+        this.actuationHandler = actuationHandler;
+    }
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<String> entity = new HttpEntity<>(payload, headers);
-
+    public boolean activateSimCard(SimCard simCard) {
         try {
-            ResponseEntity<ActuatorResponse> response = restTemplate.postForEntity(actuatorUrl, entity, ActuatorResponse.class);
-
-            return response.getBody() != null && response.getBody().isSuccess();
-
+            ActuationResult result = actuationHandler.actuate(simCard);
+            return result != null && result.isSuccess();
         } catch (Exception e) {
-            System.err.println("Failed to call actuator: " + e.getMessage());
+            System.err.println("Actuation Failed: " + e.getMessage());
             return false;
         }
     }
