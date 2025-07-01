@@ -26,10 +26,10 @@ public class SimActivationController {
 
     @GetMapping("/record")
     public ResponseEntity<SimActivationRecord> getRecord(@RequestParam Long simCardID) {
-        SimActivationRecord record = service.getRecordById(simCardID);
-        if (record == null) {
+        SimActivationRecord simRecord = service.getRecordById(simCardID);
+        if (simRecord == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(record);
+        return ResponseEntity.ok(simRecord);
     }
 }

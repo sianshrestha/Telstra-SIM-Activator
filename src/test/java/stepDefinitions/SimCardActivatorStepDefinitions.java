@@ -50,15 +50,15 @@ public class SimCardActivatorStepDefinitions {
 
     @Then("the sim card is activated and its state is recorded to the database")
     public void theSimCardIsActivatedAndItsStateIsRecordedToTheDatabase() {
-        SimActivationRecord record = restTemplate.getForObject(
+        SimActivationRecord simRecord = restTemplate.getForObject(
                 "http://localhost:8080/sim/record?simCardID={id}", SimActivationRecord.class, lastRecordId);
-        assertTrue(record.isActive());
+        assertTrue(simRecord.isActive());
     }
 
     @Then("the sim card fails to activate and its state is recorded to the database")
     public void theSimCardFailsToActivateAndItsStateIsRecordedToTheDatabase() {
-        SimActivationRecord record = restTemplate.getForObject(
+        SimActivationRecord simRecord = restTemplate.getForObject(
                 "http://localhost:8080/sim/record?simCardID={id}", SimActivationRecord.class, lastRecordId);
-        assertFalse(record.isActive());
+        assertFalse(simRecord.isActive());
     }
 }

@@ -3,7 +3,9 @@ package au.com.telstra.simcardactivator.foundation;
 public class ActuationResult{
     private boolean success;
 
-    public ActuationResult() {}
+    public ActuationResult() {
+        // Required for frameworks like JPA/Jackson that use reflection
+    }
 
     public boolean isSuccess() {
         return success;
