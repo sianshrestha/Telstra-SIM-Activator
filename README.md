@@ -2,13 +2,9 @@
 
 A Spring Boot-based microservice for activating SIM cards, managing their activation state, and recording activation results in a database. This project includes behavior-driven development (BDD) tests using Cucumber to ensure functional correctness.
 
----
-
 ## Internship Context
 
 This project was developed as part of the **Telstra Australia Virtual Internship** program. The internship focused on applying software engineering principles, clean code practices, and using tools like SonarQube for code quality analysis. The task involved building a microservice for SIM card activation, incorporating robust error handling, logging, and persistence.
-
----
 
 ## Features
 
@@ -18,8 +14,6 @@ This project was developed as part of the **Telstra Australia Virtual Internship
 * Behavior-driven tests using Cucumber to describe and verify service behavior.
 * Logging with SLF4J for better traceability and debugging.
 * Easy to extend for additional SIM card operations.
-
----
 
 ## Getting Started
 
@@ -62,8 +56,6 @@ This project was developed as part of the **Telstra Australia Virtual Internship
    mvn test
    ```
 
----
-
 ## Project Structure
 
 * `/src/main/java` – Main application source code.
@@ -71,8 +63,6 @@ This project was developed as part of the **Telstra Australia Virtual Internship
 * `/src/test/resources/features` – Cucumber feature files describing behavior.
 * `/src/test/java/stepDefinitions` – Step definitions implementing Cucumber tests.
 * `pom.xml` – Maven configuration.
-
----
 
 ## Technologies Used
 
@@ -83,16 +73,8 @@ This project was developed as part of the **Telstra Australia Virtual Internship
 * SLF4J + Logback for logging
 * Maven for build automation
 
----
-
 ## Notes
 
 * The H2 in-memory database resets on each application start for testing convenience.
 * Logging replaces all `System.err` usages for improved error handling.
 * Please ensure your Java and Maven versions are compatible.
-
----
-
-## License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
